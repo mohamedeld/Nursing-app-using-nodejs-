@@ -1,7 +1,7 @@
 const express = require("express");
 const classController = require("./../controller/classController");
 const router = express.Router();
-const {addClassValidator,getClassValidator,updateClassValidator,deleteClassValidator} = require("./../middlewares/validations/classValidation/classValidation.js");
+const {addClassValidator,getClassValidator,updateClassValidator,deleteClassValidator} = require("../middlewares/validations/classValidation");
 const checkValidation = require("./../middlewares/validations/check-valditor");
 
 
