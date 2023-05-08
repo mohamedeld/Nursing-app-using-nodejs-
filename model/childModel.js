@@ -12,6 +12,7 @@ const addressSchema = new mongoose.Schema({
 const childSchema = new mongoose.Schema({
     fullName:{
         type:String,
+        unique:true,
         required:[true,"your full name is required"]
     },
     age:Number,

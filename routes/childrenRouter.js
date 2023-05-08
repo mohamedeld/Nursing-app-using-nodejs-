@@ -6,8 +6,8 @@ const auth =require("./../middlewares/authPermission");
 
 const router = express.Router();
 
-router.route("/").get(childController.getAllChildren).post(addChildValidator,checkValidation,auth,childController.addChild);
-router.route("/:id").get(getChildValidator,checkValidation,childController.getChild).patch(updateChildValidator,checkValidation,auth,childController.updateChild).delete(deleteChildValidator,checkValidation,auth,childController.deleteChild);
+router.route("/").get(auth,childController.getAllChildren).post(auth,addChildValidator,checkValidation,auth,childController.addChild);
+router.route("/:id").get(auth,getChildValidator,checkValidation,childController.getChild).patch(auth,updateChildValidator,checkValidation,auth,childController.updateChild).delete(auth,deleteChildValidator,checkValidation,auth,childController.deleteChild);
 
 // router.route("/:id/class").get(childController.getClass);
 

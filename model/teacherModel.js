@@ -16,6 +16,7 @@ const teacherSchema = new mongoose.Schema({
     },
     email:{
         type:String,
+        unique:true,
         required:[true,"email is required"]
     },
     image:{
