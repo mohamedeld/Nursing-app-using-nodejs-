@@ -8,7 +8,8 @@ const teacherSchema = new mongoose.Schema({
     },
     fullName:{
         type:String,
-        required:[true,"full name is required"]
+        required:[true,"full name is required"],
+        unique:true
     },
     password:{
         type:String,
