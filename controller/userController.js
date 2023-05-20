@@ -1,3 +1,4 @@
+const { response } = require("express");
 const User = require("./../model/userModel");
 const bcrypt = require("bcrypt");
 
@@ -27,6 +28,67 @@ exports.userCheckInfo = async (request, response, next) => {
       data: {
         user,
       },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getUsers = async (request, response, next) => {
+  try {
+    const users = await User.find({});
+    response.status(200).json({
+      data: {
+        users,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getUser = async (request, response, next) => {
+  try {
+    const user = await User.findById(request.params.id);
+    if (!user) {
+      throw new Error("invalid id");
+    }
+    response.status(200).json({
+      data: {
+        user,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.updateUsers = async (request, response, next) => {
+  try {
+    const user = await User.findByIdAndUpdate(request.params.id, request.body, {
+      new: true,
+    });
+    if (!user) {
+      throw new Error("invalid id");
+    }
+    response.status(200).json({
+      data: {
+        user,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.deleteUser = async (request, response, next) => {
+  try {
+    const user = await User.findByIdAndDelete(request.params.id);
+    if (!user) {
+      throw new Error("invalid id");
+    }
+    response.status(200).json({
+      message: "deleted",
     });
   } catch (err) {
     next(err);
